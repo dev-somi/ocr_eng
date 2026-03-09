@@ -1,0 +1,43 @@
+name: clickword
+description: "카메라로 찍으면 뿅! 하고 나만의 영단어장이 완성되는 마법 같은 앱이에요. 게임처럼 즐거운 퀴즈로 지루함 없이 영어 단어를 마스터해 보세요!"
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  permission_handler: ^11.3.1
+  camera: 0.11.2+1
+  uuid: ^4.0.0
+  percent_indicator: ^4.0.0
+  fl_chart: 0.68.0
+  intl: ^0.19.0
+  hive_flutter: ^1.1.0
+  hive: ^2.2.3
+  flutter_tts: ^4.0.2
+  google_mlkit_text_recognition: ^0.13.0
+  image_picker: '>=1.1.2'
+  flutter_animate: ^4.5.0
+  flutter_riverpod: ^2.5.1
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.1.0
+  provider: ^6.1.2
+  go_router: ^16.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter:
+  uses-material-design: true
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/icons/dreamflow_icon.jpg
+  remove_alpha_ios: true
