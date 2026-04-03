@@ -126,9 +126,9 @@ ThemeData _buildTheme(Brightness brightness) {
   final scaffoldBg = isLight ? LightColors.background : DarkColors.background;
 
   // Font config
-  // Primary: Baloo 2, Secondary: Quicksand
-  final primaryFont = GoogleFonts.baloo2TextTheme();
-  final secondaryFont = GoogleFonts.quicksandTextTheme();
+  // Primary: Noto Sans KR, Secondary: Noto Sans KR
+  final primaryFont = GoogleFonts.notoSansKrTextTheme();
+  final secondaryFont = GoogleFonts.notoSansKrTextTheme();
 
   TextStyle getStyle(String fontType, double size, FontWeight weight, double height) {
     final base = (fontType == 'primary' ? primaryFont : secondaryFont).bodyMedium!;
