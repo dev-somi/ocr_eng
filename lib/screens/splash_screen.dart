@@ -25,149 +25,185 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: LightColors.primary,
+      backgroundColor: const Color(0xFFFFF9F0),
       body: SafeArea(
         child: Stack(
           fit: StackFit.expand,
           children: [
-            _buildFloatingParticle(40, LightColors.secondary, -0.8, -0.7),
-            _buildFloatingParticle(24, LightColors.accent, 0.7, -0.5),
-            _buildFloatingParticle(60, LightColors.onPrimary, -0.5, 0.4),
-            _buildFloatingParticle(32, LightColors.secondary, 0.8, 0.8),
+            // 배경 도형들
+            Positioned(
+              top: 40,
+              left: -20,
+              child: _buildBgShape(100, const Color(0xFFFFD60A), 0.3),
+            ),
+            Positioned(
+              top: 80,
+              right: -10,
+              child: _buildBgShape(60, const Color(0xFF4CC9F0), 0.25),
+            ),
+            Positioned(
+              bottom: 120,
+              left: 20,
+              child: _buildBgShape(80, const Color(0xFFFF6B6B), 0.2),
+            ),
+            Positioned(
+              bottom: 200,
+              right: 30,
+              child: _buildBgShape(50, const Color(0xFFFFD60A), 0.35),
+            ),
+
+            // 메인 콘텐츠
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                // 카메라 아이콘 + 알파벳 배지
                 Stack(
-                  alignment: Alignment.center,
+                  clipBehavior: Clip.none,
                   children: [
+                    // 메인 원형 아이콘
                     Container(
-                      width: 180,
-                      height: 180,
+                      width: 120,
+                      height: 120,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(AppRadius.lg),
+                        color: const Color(0xFFFFD60A),
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.black, width: 3),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black,
+                            offset: Offset(4, 4),
+                            blurRadius: 0,
+                          ),
+                        ],
                       ),
-                    ).animate(onPlay: (controller) => controller.repeat())
-                        .rotate(begin: 0, end: 0.05, duration: 2000.ms, curve: Curves.easeInOut)
-                        .then()
-                        .rotate(begin: 0.05, end: 0, duration: 2000.ms, curve: Curves.easeInOut),
-
-                    Container(
-                      width: 180,
-                      height: 180,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(AppRadius.lg),
+                      child: const Icon(
+                        Icons.camera_alt_rounded,
+                        size: 56,
+                        color: Colors.black,
                       ),
-                    ).animate(onPlay: (controller) => controller.repeat())
-                        .rotate(begin: 0, end: -0.05, duration: 2500.ms, curve: Curves.easeInOut)
-                        .then()
-                        .rotate(begin: -0.05, end: 0, duration: 2500.ms, curve: Curves.easeInOut),
-
-                    Container(
-                      width: 160,
-                      height: 160,
-                      decoration: BoxDecoration(
-                        color: LightColors.surface,
-                        borderRadius: BorderRadius.circular(AppRadius.lg),
-                        boxShadow: [AppShadows.xl],
-                      ),
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.camera_rounded, size: 64, color: LightColors.primary),
-                            const SizedBox(height: AppSpacing.sm),
-                            Text(
-                              "ABC",
-                              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                color: LightColors.primary,
-                                fontWeight: FontWeight.w900,
-                              ),
+                    ),
+                    // A 배지
+                    Positioned(
+                      top: -10,
+                      right: -10,
+                      child: Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFF6B6B),
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.black, width: 2.5),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black,
+                              offset: Offset(2, 2),
+                              blurRadius: 0,
                             ),
                           ],
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: AppSpacing.xl),
-                Column(
-                  children: [
-                    Text(
-                      "ClickWord",
-                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        color: LightColors.onPrimary,
-                        fontSize: 48,
-                      ),
-                    ).animate().fadeIn(duration: 800.ms).slideY(begin: 0.2, end: 0),
-                    const SizedBox(height: AppSpacing.sm),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: LightColors.secondary,
-                        borderRadius: BorderRadius.circular(AppRadius.full),
-                      ),
-                      child: Text(
-                        "AI 영단어 수집기",
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                          color: LightColors.onSecondary,
+                        child: const Center(
+                          child: Text(
+                            "A",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
                         ),
                       ),
-                    ).animate().fadeIn(delay: 400.ms).scale(),
-                  ],
-                ),
-                const SizedBox(height: AppSpacing.lg),
-                Column(
-                  children: [
-                    const SizedBox(
-                      width: 40,
-                      height: 40,
-                      child: CircularProgressIndicator(
-                        color: LightColors.secondary,
-                        strokeWidth: 6,
-                      ),
-                    ),
-                    const SizedBox(height: AppSpacing.md),
-                    Text(
-                      "교재를 찍으면 단어가 쏙쏙!",
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: LightColors.onPrimary.withOpacity(0.9),
-                      ),
                     ),
                   ],
-                ),
+                )
+                    .animate()
+                    .scale(
+                      begin: const Offset(0.5, 0.5),
+                      end: const Offset(1.0, 1.0),
+                      duration: 600.ms,
+                      curve: Curves.elasticOut,
+                    )
+                    .fadeIn(duration: 300.ms),
+
+                const SizedBox(height: 32),
+
+                // 앱 이름
+                Text(
+                  "ClickWord",
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        color: Colors.black,
+                        fontSize: 40,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: -1,
+                      ),
+                ).animate().fadeIn(delay: 300.ms, duration: 500.ms).slideY(
+                    begin: 0.3,
+                    end: 0,
+                    delay: 300.ms,
+                    duration: 500.ms,
+                    curve: Curves.easeOut),
+
+                const SizedBox(height: 10),
+
+                // 서브타이틀
+                Text(
+                  "찍으면 단어장이 완성돼요 ✨",
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ).animate().fadeIn(delay: 500.ms, duration: 500.ms),
+
+                const SizedBox(height: 40),
+
+                // 시작하기 버튼 (누를 수 없는 표시용)
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFFD60A),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: Colors.black, width: 2.5),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black,
+                        offset: Offset(3, 3),
+                        blurRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: const Text(
+                    "시작하기",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ).animate().fadeIn(delay: 700.ms, duration: 500.ms).slideY(
+                    begin: 0.2, end: 0, delay: 700.ms, duration: 400.ms),
               ],
             ),
+
+            // 하단 로딩 표시
             Positioned(
-              bottom: 40,
+              bottom: 48,
               left: 0,
               right: 0,
               child: Column(
                 children: [
-                  Text(
-                    "기술 지원",
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: LightColors.onPrimary.withOpacity(0.7),
-                    ),
-                  ),
-                  const SizedBox(height: AppSpacing.xs),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.auto_awesome_rounded, size: 16, color: LightColors.secondary),
-                      const SizedBox(width: AppSpacing.sm),
-                      Text(
-                        "스마트 OCR 엔진",
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: LightColors.onPrimary,
-                        ),
-                      ),
+                      _buildDot(0),
+                      const SizedBox(width: 6),
+                      _buildDot(200),
+                      const SizedBox(width: 6),
+                      _buildDot(400),
                     ],
                   ),
                 ],
-              ),
+              ).animate().fadeIn(delay: 900.ms),
             ),
           ],
         ),
@@ -175,18 +211,31 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  Widget _buildFloatingParticle(double size, Color color, double alignX, double alignY) {
-    return Align(
-      alignment: Alignment(alignX, alignY),
-      child: Container(
-        width: size,
-        height: size,
-        decoration: BoxDecoration(
-          color: color.withOpacity(0.6),
-          shape: BoxShape.circle,
-        ),
+  Widget _buildBgShape(double size, Color color, double opacity) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: color.withOpacity(opacity),
+        shape: BoxShape.circle,
       ),
-    ).animate(onPlay: (controller) => controller.repeat(reverse: true))
-        .moveY(begin: 0, end: 20, duration: 2000.ms, curve: Curves.easeInOut);
+    );
+  }
+
+  Widget _buildDot(int delayMs) {
+    return Container(
+      width: 8,
+      height: 8,
+      decoration: BoxDecoration(
+        color: Colors.black.withOpacity(0.2),
+        shape: BoxShape.circle,
+      ),
+    ).animate(onPlay: (c) => c.repeat(reverse: true)).scaleXY(
+          begin: 0.6,
+          end: 1.0,
+          delay: Duration(milliseconds: delayMs),
+          duration: 600.ms,
+          curve: Curves.easeInOut,
+        );
   }
 }
