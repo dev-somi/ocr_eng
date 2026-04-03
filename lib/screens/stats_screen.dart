@@ -22,7 +22,7 @@ class StatsScreen extends StatelessWidget {
                 children: [
                   _buildNavButton(Icons.arrow_back_rounded, () => context.pop(), const Color(0xFFFFD60A)),
                   Text(
-                    "My Progress",
+                    "내 학습 현황",
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.w900,
                       color: LightColors.primaryText,
@@ -53,7 +53,7 @@ class StatsScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "7 DAY STREAK!",
+                            "7일 연속 달성!",
                             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                               color: LightColors.primaryText,
                               fontWeight: FontWeight.w900,
@@ -61,7 +61,7 @@ class StatsScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            "You're a word wizard! Keep going to unlock the Golden Owl.",
+                            "단어 마법사예요! 황금 올빼미를 얻으려면 계속하세요.",
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: LightColors.primaryText,
                               fontWeight: FontWeight.w600,
@@ -92,7 +92,7 @@ class StatsScreen extends StatelessWidget {
                       context,
                       Icons.edit_rounded,
                       const Color(0xFF4CC9F0),
-                      "WORDS",
+                      "단어",
                       "128",
                     ),
                   ),
@@ -102,7 +102,7 @@ class StatsScreen extends StatelessWidget {
                       context,
                       Icons.star_rounded,
                       const Color(0xFFFFD60A),
-                      "ACCURACY",
+                      "정확도",
                       "92%",
                     ),
                   ),
@@ -123,14 +123,14 @@ class StatsScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Weekly Activity",
+                          "주간 활동",
                           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.w800,
                             color: LightColors.primaryText,
                           ),
                         ),
                         Text(
-                          "Last 7 Days",
+                          "최근 7일",
                           style: Theme.of(context).textTheme.labelMedium?.copyWith(
                             color: LightColors.secondaryText,
                           ),
@@ -151,7 +151,7 @@ class StatsScreen extends StatelessWidget {
                               sideTitles: SideTitles(
                                 showTitles: true,
                                 getTitlesWidget: (value, meta) {
-                                  const titles = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+                                  const titles = ['월', '화', '수', '목', '금', '토', '일'];
                                   if (value.toInt() < 0 || value.toInt() >= titles.length) return const SizedBox();
                                   return Padding(
                                     padding: const EdgeInsets.only(top: 8),
@@ -186,7 +186,7 @@ class StatsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               Text(
-                "Daily Goal",
+                "오늘의 목표",
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.w800,
                   color: LightColors.primaryText,
@@ -205,13 +205,13 @@ class StatsScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        _buildDayBubble(context, "Mon", true),
-                        _buildDayBubble(context, "Tue", true),
-                        _buildDayBubble(context, "Wed", true),
-                        _buildDayBubble(context, "Thu", true),
-                        _buildDayBubble(context, "Fri", false),
-                        _buildDayBubble(context, "Sat", false),
-                        _buildDayBubble(context, "Sun", false),
+                        _buildDayBubble(context, "월", true),
+                        _buildDayBubble(context, "화", true),
+                        _buildDayBubble(context, "수", true),
+                        _buildDayBubble(context, "목", true),
+                        _buildDayBubble(context, "금", false),
+                        _buildDayBubble(context, "토", false),
+                        _buildDayBubble(context, "일", false),
                       ],
                     ),
                     const SizedBox(height: 24),
@@ -222,7 +222,7 @@ class StatsScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Today's Target: 15/20 words",
+                              "오늘 목표: 15/20 단어",
                               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w700,
                                 color: LightColors.primaryText,

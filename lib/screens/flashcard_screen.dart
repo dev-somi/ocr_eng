@@ -91,12 +91,12 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
       orElse: () => WordBook.create(title: "Not Found"),
     );
 
-    if (book.title == "Not Found") return const Scaffold(body: Center(child: Text("Not Found")));
+    if (book.title == "Not Found") return const Scaffold(body: Center(child: Text("찾을 수 없음")));
     if (_words.isEmpty && book.words.isNotEmpty) {
       _words = List.from(book.words);
     }
 
-    if (_words.isEmpty) return const Scaffold(body: Center(child: Text("No words")));
+    if (_words.isEmpty) return const Scaffold(body: Center(child: Text("단어 없음")));
 
     final word = _words[_currentIndex];
 
@@ -179,7 +179,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
                   Expanded(
                     child: _buildActionPill(
                       context,
-                      "Again",
+                      "다시",
                       Icons.sentiment_very_dissatisfied_rounded,
                       LightColors.error,
                           () => _nextCard(false),
@@ -189,7 +189,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
                   Expanded(
                     child: _buildActionPill(
                       context,
-                      "Got it!",
+                      "알아요!",
                       Icons.sentiment_very_satisfied_rounded,
                       LightColors.success,
                           () => _nextCard(true),
@@ -204,7 +204,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Card ${_currentIndex + 1} of ${_words.length}",
+                    "${_currentIndex + 1} / ${_words.length}",
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: LightColors.secondaryText,
                       fontWeight: FontWeight.w700,
@@ -284,7 +284,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> with SingleTi
                 const Icon(Icons.sync_rounded, color: LightColors.primary, size: 20),
                 const SizedBox(width: 8),
                 Text(
-                  "Tap to see meaning",
+                  "탭해서 뜻 보기",
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                     color: LightColors.primary,
                     fontWeight: FontWeight.w700,

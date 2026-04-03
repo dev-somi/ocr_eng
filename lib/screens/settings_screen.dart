@@ -20,7 +20,7 @@ class SettingsScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "My Profile",
+                    "내 프로필",
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       color: LightColors.primaryText,
                       fontWeight: FontWeight.w900,
@@ -72,7 +72,7 @@ class SettingsScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "Level 12 Word Master",
+                                "레벨 12 단어 마스터",
                                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                   color: LightColors.accent,
                                   fontWeight: FontWeight.bold,
@@ -92,7 +92,7 @@ class SettingsScreen extends StatelessWidget {
                                     const Icon(Icons.local_fire_department_rounded, color: LightColors.primary, size: 14),
                                     const SizedBox(width: 4),
                                     Text(
-                                      "7 Day Streak",
+                                      "7일 연속",
                                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                         color: LightColors.primaryText,
                                       ),
@@ -111,65 +111,65 @@ class SettingsScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _buildProfileStat(context, "1,240", "Words"),
-                        _buildProfileStat(context, "48", "Quizzes"),
-                        _buildProfileStat(context, "92%", "Accuracy"),
+                        _buildProfileStat(context, "1,240", "단어"),
+                        _buildProfileStat(context, "48", "퀴즈"),
+                        _buildProfileStat(context, "92%", "정확도"),
                       ],
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 32),
-              _buildSectionHeader(context, "Learning"),
+              _buildSectionHeader(context, "학습"),
               _buildSettingsTile(
                 context,
                 Icons.volume_up_rounded,
                 const Color(0xFFE3F2FD),
                 LightColors.accent,
-                "Pronunciation",
-                "Auto-play TTS after flip",
+                "발음",
+                "카드 뒤집기 후 자동 발음",
               ),
               _buildSettingsTile(
                 context,
                 Icons.psychology_rounded,
                 const Color(0xFFF3E5F5),
                 const Color(0xFF9C27B0),
-                "Quiz Difficulty",
-                "Current: Intermediate",
+                "퀴즈 난이도",
+                "현재: 중급",
               ),
               _buildSettingsTile(
                 context,
                 Icons.notifications_active_rounded,
                 const Color(0xFFFFF3E0),
                 const Color(0xFFF57C00),
-                "Study Reminders",
-                "Daily at 7:00 PM",
+                "학습 알림",
+                "매일 오후 7:00",
               ),
               const SizedBox(height: 24),
-              _buildSectionHeader(context, "Account & App"),
+              _buildSectionHeader(context, "계정 및 앱"),
               _buildSettingsTile(
                 context,
                 Icons.face_rounded,
                 const Color(0xFFE8F5E9),
                 LightColors.success,
-                "Parental Control",
-                "Manage study goals and limits",
+                "자녀 보호",
+                "학습 목표 및 제한 관리",
               ),
               _buildSettingsTile(
                 context,
                 Icons.dark_mode_rounded,
                 const Color(0xFFECEFF1),
                 LightColors.secondaryText,
-                "Appearance",
-                "System default theme",
+                "화면 설정",
+                "시스템 기본 테마",
               ),
               _buildSettingsTile(
                 context,
                 Icons.cloud_upload_rounded,
                 const Color(0xFFE0F2F1),
                 const Color(0xFF00897B),
-                "Data Backup",
-                "Last synced: 2 hours ago",
+                "데이터 백업",
+                "마지막 동기화: 2시간 전",
               ),
               const SizedBox(height: 32),
               SizedBox(
@@ -178,7 +178,7 @@ class SettingsScreen extends StatelessWidget {
                 child: OutlinedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.logout_rounded),
-                  label: const Text("Sign Out"),
+                  label: const Text("로그아웃"),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: LightColors.error,
                     side: const BorderSide(color: LightColors.error, width: 2),
@@ -195,7 +195,7 @@ class SettingsScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(color: LightColors.hint),
                     ),
                     Text(
-                      "Made with ❤️ for young learners",
+                      "어린 학습자들을 위해 ❤️로 만들었어요",
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(color: LightColors.hint),
                     ),
                   ],

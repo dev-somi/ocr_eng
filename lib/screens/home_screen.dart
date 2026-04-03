@@ -24,23 +24,25 @@ class HomeScreen extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Hi, Min-jun! 👋",
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: LightColors.secondaryText,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "안녕, 민준! 👋",
+                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: LightColors.secondaryText,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Ready to study?",
-                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                          color: LightColors.primaryText,
-                          fontWeight: FontWeight.w900,
+                        Text(
+                          "오늘도 공부해볼까?",
+                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                            color: LightColors.primaryText,
+                            fontWeight: FontWeight.w900,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Container(
                     width: 56,
@@ -81,14 +83,14 @@ class HomeScreen extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Today's Goal",
+                                "오늘의 목표",
                                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
-                                "12/20 Words",
+                                "12/20 단어",
                                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w900,
@@ -137,11 +139,11 @@ class HomeScreen extends ConsumerWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          _buildProgressStat(context, "5", "Days Streak"),
+                          _buildProgressStat(context, "5", "일 연속"),
                           Container(width: 2, height: 40, color: Colors.black.withOpacity(0.15)),
-                          _buildProgressStat(context, "128", "Total Words"),
+                          _buildProgressStat(context, "128", "전체 단어"),
                           Container(width: 2, height: 40, color: Colors.black.withOpacity(0.15)),
-                          _buildProgressStat(context, "Quiz", "Next Step"),
+                          _buildProgressStat(context, "퀴즈", "다음 단계"),
                         ],
                       ),
                     ],
@@ -171,7 +173,7 @@ class HomeScreen extends ConsumerWidget {
                       const Icon(Icons.photo_camera_rounded, color: Colors.white, size: 32),
                       const SizedBox(width: AppSpacing.md),
                       Text(
-                        "Scan New Words",
+                        "새 단어 스캔",
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w900,
@@ -186,7 +188,7 @@ class HomeScreen extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "My Wordbooks",
+                    "내 단어장",
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.w900,
                       color: LightColors.primaryText,
@@ -195,7 +197,7 @@ class HomeScreen extends ConsumerWidget {
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      "See All",
+                      "전체 보기",
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         color: LightColors.primary,
                         fontWeight: FontWeight.bold,
@@ -209,10 +211,10 @@ class HomeScreen extends ConsumerWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    _buildCategoryChip(context, "All", true),
-                    _buildCategoryChip(context, "School", false),
-                    _buildCategoryChip(context, "Academy", false),
-                    _buildCategoryChip(context, "Favorites", false),
+                    _buildCategoryChip(context, "전체", true),
+                    _buildCategoryChip(context, "학교", false),
+                    _buildCategoryChip(context, "학원", false),
+                    _buildCategoryChip(context, "즐겨찾기", false),
                   ],
                 ),
               ),
@@ -226,11 +228,11 @@ class HomeScreen extends ConsumerWidget {
                         Icon(Icons.library_books_rounded, size: 64, color: LightColors.hint),
                         const SizedBox(height: 16),
                         Text(
-                          "No wordbooks yet!",
+                          "단어장이 없어요!",
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(color: LightColors.secondaryText),
                         ),
                         Text(
-                          "Tap 'Scan New Words' to create one.",
+                          "'새 단어 스캔'을 눌러 만들어보세요.",
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: LightColors.hint),
                         ),
                       ],
@@ -328,7 +330,7 @@ class HomeScreen extends ConsumerWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    "${book.words.length} Words",
+                    "${book.words.length}개 단어",
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: LightColors.secondaryText,
                     ),

@@ -65,7 +65,7 @@ class QuizResultScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          "Amazing Job!",
+                          "훌륭해요!",
                           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                             color: LightColors.primaryText,
                             fontWeight: FontWeight.w900,
@@ -73,7 +73,7 @@ class QuizResultScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         Text(
-                          "You're becoming a word master!",
+                          "단어 마스터가 되고 있어요!",
                           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             color: LightColors.secondaryText,
                           ),
@@ -107,7 +107,7 @@ class QuizResultScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "SCORE",
+                              "점수",
                               style: Theme.of(context).textTheme.labelLarge?.copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: LightColors.primaryText,
@@ -131,7 +131,7 @@ class QuizResultScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "ACCURACY",
+                              "정확도",
                               style: Theme.of(context).textTheme.labelLarge?.copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: LightColors.primaryText,
@@ -162,8 +162,8 @@ class QuizResultScreen extends StatelessWidget {
                         context,
                         Icons.timer_rounded,
                         const Color(0xFF4CC9F0),
-                        "Time",
-                        "02:45", // Mock
+                        "시간",
+                        "02:45",
                       ),
                     ),
                     const SizedBox(width: 16),
@@ -172,8 +172,8 @@ class QuizResultScreen extends StatelessWidget {
                         context,
                         Icons.local_fire_department_rounded,
                         const Color(0xFFEF476F),
-                        "Streak",
-                        "5 Days", // Mock
+                        "연속",
+                        "5일",
                       ),
                     ),
                   ],
@@ -189,7 +189,7 @@ class QuizResultScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Review Words",
+                          "단어 복습",
                           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.w800,
                             color: LightColors.primaryText,
@@ -202,7 +202,7 @@ class QuizResultScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(AppRadius.full),
                           ),
                           child: Text(
-                            "$correctCount/$totalCount Correct",
+                            "$correctCount/$totalCount 정답",
                             style: Theme.of(context).textTheme.labelLarge?.copyWith(
                               color: LightColors.onPrimary,
                               fontWeight: FontWeight.bold,
@@ -242,7 +242,7 @@ class QuizResultScreen extends StatelessWidget {
                             const Icon(Icons.replay_rounded, color: Colors.white, size: 24),
                             const SizedBox(width: 8),
                             Text(
-                              "Try Again",
+                              "다시 시도",
                               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -275,7 +275,7 @@ class QuizResultScreen extends StatelessWidget {
                             const Icon(Icons.home_rounded, color: Colors.black, size: 24),
                             const SizedBox(width: 8),
                             Text(
-                              "Back to Home",
+                              "홈으로",
                               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,

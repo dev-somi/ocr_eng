@@ -19,8 +19,7 @@ void main() async {
 
   // 단어 데이터를 관리하는 저장소를 만들고 초기화합니다.
   final repository = WordRepository();
-  await repository.init();      // 데이터베이스 연결 등 초기 설정
-  await repository.seedData();  // 앱에 기본으로 필요한 단어 데이터를 넣어줍니다.
+  await repository.init(); // 데이터베이스 연결 등 초기 설정
 
   // 앱 화면을 항상 세로 방향으로만 사용하도록 고정합니다.
   await SystemChrome.setPreferredOrientations([
@@ -48,12 +47,12 @@ class ClickWordApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'ClickWord',               // 앱의 이름 (기기 작업 목록 등에 표시됨)
+      title: 'ClickWord', // 앱의 이름 (기기 작업 목록 등에 표시됨)
       debugShowCheckedModeBanner: false, // 개발 중에 표시되는 "DEBUG" 배너를 숨깁니다.
-      theme: lightTheme,                 // 라이트 모드(밝은 화면) 테마 적용
-      darkTheme: darkTheme,              // 다크 모드 테마도 구조적으로 준비되어 있습니다.
-      themeMode: ThemeMode.light,        // 현재는 라이트 모드로 고정합니다.
-      routerConfig: AppRouter.router,    // 화면 이동 경로(라우팅) 설정을 불러옵니다.
+      theme: lightTheme, // 라이트 모드(밝은 화면) 테마 적용
+      darkTheme: darkTheme, // 다크 모드 테마도 구조적으로 준비되어 있습니다.
+      themeMode: ThemeMode.light, // 현재는 라이트 모드로 고정합니다.
+      routerConfig: AppRouter.router, // 화면 이동 경로(라우팅) 설정을 불러옵니다.
     );
   }
 }

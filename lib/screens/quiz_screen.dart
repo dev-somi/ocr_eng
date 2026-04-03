@@ -102,14 +102,14 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
       orElse: () => WordBook.create(title: "Not Found"),
     );
 
-    if (book.title == "Not Found") return const Scaffold(body: Center(child: Text("Not Found")));
+    if (book.title == "Not Found") return const Scaffold(body: Center(child: Text("찾을 수 없음")));
 
     if (_questions.isEmpty && book.words.isNotEmpty) {
       _questions = List.from(book.words)..shuffle();
       _generateOptions();
     }
 
-    if (_questions.isEmpty) return const Scaffold(body: Center(child: Text("No words for quiz")));
+    if (_questions.isEmpty) return const Scaffold(body: Center(child: Text("퀴즈할 단어가 없어요")));
 
     final currentWord = _questions[_currentIndex];
 
@@ -181,7 +181,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                 child: Column(
                   children: [
                     Text(
-                      "What is the meaning of:",
+                      "다음 단어의 뜻은?",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: LightColors.secondaryText,
                         fontWeight: FontWeight.w600,
@@ -213,7 +213,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                             const Icon(Icons.volume_up_rounded, color: LightColors.primary, size: 24),
                             const SizedBox(width: 8),
                             Text(
-                              "Listen",
+                              "듣기",
                               style: Theme.of(context).textTheme.labelLarge?.copyWith(
                                 color: LightColors.primary,
                                 fontWeight: FontWeight.bold,
@@ -321,7 +321,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        "CHECK ANSWER",
+                        "정답 확인",
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: LightColors.onPrimary,
                           fontWeight: FontWeight.w800,
@@ -347,7 +347,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        _currentIndex < _questions.length - 1 ? "NEXT QUESTION" : "SEE RESULTS",
+                        _currentIndex < _questions.length - 1 ? "다음 문제" : "결과 보기",
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: LightColors.onPrimary,
                           fontWeight: FontWeight.w800,

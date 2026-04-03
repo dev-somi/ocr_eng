@@ -143,7 +143,7 @@ class _WordSelectionScreenState extends ConsumerState<WordSelectionScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Pick your words!",
+                        "단어를 골라보세요!",
                         style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.w900,
                           color: Colors.black,
@@ -152,8 +152,8 @@ class _WordSelectionScreenState extends ConsumerState<WordSelectionScreen> {
                       const SizedBox(height: 4),
                       Text(
                         _isProcessing
-                            ? "Scanning..."
-                            : "We found ${_extractedWords.length} words in your photo",
+                            ? "스캔 중..."
+                            : "사진에서 ${_extractedWords.length}개 단어를 찾았어요",
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
@@ -193,7 +193,7 @@ class _WordSelectionScreenState extends ConsumerState<WordSelectionScreen> {
                                 const Icon(Icons.image_search_rounded, color: Colors.white, size: 20),
                                 const SizedBox(width: AppSpacing.sm),
                                 Text(
-                                  "View Original Photo",
+                                  "원본 사진 보기",
                                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -210,7 +210,7 @@ class _WordSelectionScreenState extends ConsumerState<WordSelectionScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Extracted Words",
+                          "인식된 단어",
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             fontWeight: FontWeight.w800,
                             color: LightColors.primaryText,
@@ -227,7 +227,7 @@ class _WordSelectionScreenState extends ConsumerState<WordSelectionScreen> {
                             });
                           },
                           child: Text(
-                            _selectedWordIds.length == _extractedWords.length ? "Deselect All" : "Select All",
+                            _selectedWordIds.length == _extractedWords.length ? "전체 해제" : "전체 선택",
                             style: Theme.of(context).textTheme.labelLarge?.copyWith(
                               color: LightColors.primary,
                               fontWeight: FontWeight.bold,
@@ -256,14 +256,14 @@ class _WordSelectionScreenState extends ConsumerState<WordSelectionScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        "${_selectedWordIds.length} Words",
+                        "${_selectedWordIds.length}개 단어",
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w900,
                           color: LightColors.primaryText,
                         ),
                       ),
                       Text(
-                        "Selected",
+                        "선택됨",
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           color: LightColors.secondaryText,
                           fontWeight: FontWeight.w600,
@@ -287,7 +287,7 @@ class _WordSelectionScreenState extends ConsumerState<WordSelectionScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Create Wordbook",
+                              "단어장 만들기",
                               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                 color: LightColors.primaryText,
                                 fontWeight: FontWeight.w900,

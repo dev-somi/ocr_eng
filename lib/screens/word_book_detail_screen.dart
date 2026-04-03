@@ -45,7 +45,7 @@ class _WordBookDetailScreenState extends ConsumerState<WordBookDetailScreen> {
 
     if (book.title == "Not Found") {
       return const Scaffold(
-        body: Center(child: Text("Wordbook not found")),
+        body: Center(child: Text("단어장을 찾을 수 없어요")),
       );
     }
 
@@ -54,7 +54,7 @@ class _WordBookDetailScreenState extends ConsumerState<WordBookDetailScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => context.push(AppRoutes.camera),
         icon: const Icon(Icons.add_a_photo_rounded, color: LightColors.onPrimary),
-        label: const Text("Scan New Words"),
+        label: const Text("새 단어 스캔"),
         backgroundColor: LightColors.primary,
         foregroundColor: LightColors.onPrimary,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
@@ -97,7 +97,7 @@ class _WordBookDetailScreenState extends ConsumerState<WordBookDetailScreen> {
                       ),
                       const SizedBox(width: AppSpacing.sm),
                       Text(
-                        "${book.words.length} Words",
+                        "${book.words.length}개 단어",
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: LightColors.secondaryText,
                           fontWeight: FontWeight.w600,
@@ -121,7 +121,7 @@ class _WordBookDetailScreenState extends ConsumerState<WordBookDetailScreen> {
                   Expanded(
                     child: _buildActionCard(
                       context,
-                      "Flashcards",
+                      "플래시카드",
                       Icons.style_rounded,
                       const Color(0xFF4CC9F0),
                       const Color(0xFF0077B6),
@@ -132,7 +132,7 @@ class _WordBookDetailScreenState extends ConsumerState<WordBookDetailScreen> {
                   Expanded(
                     child: _buildActionCard(
                       context,
-                      "Quiz Time",
+                      "퀴즈",
                       Icons.extension_rounded,
                       const Color(0xFFFFD166),
                       const Color(0xFFB29400),
@@ -143,7 +143,7 @@ class _WordBookDetailScreenState extends ConsumerState<WordBookDetailScreen> {
                   Expanded(
                     child: _buildActionCard(
                       context,
-                      "Speak",
+                      "말하기",
                       Icons.record_voice_over_rounded,
                       const Color(0xFF52B788),
                       const Color(0xFF2D6A4F),
@@ -157,7 +157,7 @@ class _WordBookDetailScreenState extends ConsumerState<WordBookDetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Word List",
+                    "단어 목록",
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.w900,
                       color: LightColors.primaryText,
@@ -188,7 +188,7 @@ class _WordBookDetailScreenState extends ConsumerState<WordBookDetailScreen> {
               ),
               const SizedBox(height: 16),
               if (book.words.isEmpty)
-                const Center(child: Text("No words in this book yet.")),
+                const Center(child: Text("아직 단어가 없어요.")),
               ...book.words.map((word) => _buildWordItem(context, word)).toList(),
               const SizedBox(height: 80),
             ],
@@ -268,7 +268,7 @@ class _WordBookDetailScreenState extends ConsumerState<WordBookDetailScreen> {
   Widget _buildWordItem(BuildContext context, Word word) {
     // Calculate accuracy mock
     final total = word.correctCount + word.wrongCount;
-    final accuracy = total == 0 ? "New" : "${((word.correctCount / total) * 100).toInt()}%";
+    final accuracy = total == 0 ? "신규" : "${((word.correctCount / total) * 100).toInt()}%";
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),

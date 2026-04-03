@@ -169,7 +169,7 @@ class _CameraScreenState extends State<CameraScreen> with WidgetsBindingObserver
                                 border: Border.all(color: Colors.black, width: 2),
                               ),
                               child: Text(
-                                "Align words here",
+                                "단어를 여기에 맞춰주세요",
                                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
@@ -225,7 +225,7 @@ class _CameraScreenState extends State<CameraScreen> with WidgetsBindingObserver
                           const SizedBox(width: AppSpacing.md),
                           Expanded(
                             child: Text(
-                              "Keep the book flat for better results!",
+                              "책을 평평하게 놓으면 더 잘 인식돼요!",
                               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -243,7 +243,7 @@ class _CameraScreenState extends State<CameraScreen> with WidgetsBindingObserver
                         _buildBottomAction(
                             context,
                             Icons.photo_library_rounded,
-                            "Gallery",
+                            "갤러리",
                             _pickFromGallery
                         ),
                         GestureDetector(
@@ -274,7 +274,7 @@ class _CameraScreenState extends State<CameraScreen> with WidgetsBindingObserver
                             ),
                           ),
                         ),
-                        _buildBottomAction(context, Icons.help_outline_rounded, "Help", () {}),
+                        _buildBottomAction(context, Icons.help_outline_rounded, "도움말", () {}),
                       ],
                     ),
                   ],

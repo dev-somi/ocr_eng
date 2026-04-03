@@ -10,7 +10,9 @@ final wordBookListProvider = StateNotifierProvider<WordBookListNotifier, List<Wo
 class WordBookListNotifier extends StateNotifier<List<WordBook>> {
   final WordRepository _repository;
 
-  WordBookListNotifier(this._repository) : super([]);
+  WordBookListNotifier(this._repository) : super([]) {
+    loadWordBooks();
+  }
 
   Future<void> loadWordBooks() async {
     state = _repository.getWordBooks();

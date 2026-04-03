@@ -147,7 +147,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Column(
                 children: [
                   Text(
-                    "POWERED BY",
+                    "기술 지원",
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       color: LightColors.onPrimary.withOpacity(0.7),
                     ),
@@ -159,7 +159,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       const Icon(Icons.auto_awesome_rounded, size: 16, color: LightColors.secondary),
                       const SizedBox(width: AppSpacing.sm),
                       Text(
-                        "Smart OCR Engine",
+                        "스마트 OCR 엔진",
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: LightColors.onPrimary,
                         ),
