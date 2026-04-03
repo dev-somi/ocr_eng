@@ -19,7 +19,8 @@ class WordSelectionScreen extends ConsumerStatefulWidget {
 }
 
 class _WordSelectionScreenState extends ConsumerState<WordSelectionScreen> {
-  final _textRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
+  final _latinRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
+  final _koreanRecognizer = TextRecognizer(script: TextRecognitionScript.korean);
   bool _isProcessing = true;
   List<Word> _extractedWords = [];
   final Set<String> _selectedWordIds = {};
@@ -32,43 +33,77 @@ class _WordSelectionScreenState extends ConsumerState<WordSelectionScreen> {
 
   @override
   void dispose() {
-    _textRecognizer.close();
+    _latinRecognizer.close();
+    _koreanRecognizer.close();
     super.dispose();
   }
 
   Future<void> _processImage() async {
     try {
       final inputImage = InputImage.fromFilePath(widget.imagePath);
-      final recognizedText = await _textRecognizer.processImage(inputImage);
 
+      // 영어, 한국어 OCR 동시 실행
+      final results = await Future.wait([
+        _latinRecognizer.processImage(inputImage),
+        _koreanRecognizer.processImage(inputImage),
+      ]);
+      final latinResult = results[0];
+      final koreanResult = results[1];
+
+      // 영어 줄 추출: {centerY → english text}
+      final Map<double, String> englishByY = {};
+      for (final block in latinResult.blocks) {
+        for (final line in block.lines) {
+          final english = line.elements
+              .map((e) => e.text.trim())
+              .where((t) => RegExp(r'^[a-zA-Z]{3,}$').hasMatch(t))
+              .join(' ');
+          if (english.isNotEmpty) {
+            final y = line.boundingBox.center.dy;
+            englishByY[y] = english;
+          }
+        }
+      }
+
+      // 한국어 줄 추출: {centerY → korean text}
+      final Map<double, String> koreanByY = {};
+      for (final block in koreanResult.blocks) {
+        for (final line in block.lines) {
+          final korean = line.text.trim();
+          if (RegExp(r'[가-힣]').hasMatch(korean)) {
+            final y = line.boundingBox.center.dy;
+            koreanByY[y] = korean;
+          }
+        }
+      }
+
+      // Y좌표 기준으로 영어 ↔ 한국어 매칭 (허용 오차 40px)
+      const double yTolerance = 40.0;
       final words = <Word>[];
       final seen = <String>{};
 
-      for (TextBlock block in recognizedText.blocks) {
-        for (TextLine line in block.lines) {
-          for (TextElement element in line.elements) {
-            final text = element.text.trim();
-            // Simple filter: only letters, length > 2
-            if (RegExp(r'^[a-zA-Z]{3,}$').hasMatch(text)) {
-              final lower = text.toLowerCase();
-              if (!seen.contains(lower)) {
-                seen.add(lower);
-                // Mock meaning for now, in real app would use dictionary API
-                String meaning = "Meaning of $text";
-                if (text.toLowerCase() == "adventure") meaning = "모험";
-                if (text.toLowerCase() == "knowledge") meaning = "지식";
-                if (text.toLowerCase() == "challenge") meaning = "도전";
-                if (text.toLowerCase() == "discovery") meaning = "발견";
-                if (text.toLowerCase() == "imagine") meaning = "상상하다";
-                if (text.toLowerCase() == "success") meaning = "성공";
+      for (final engEntry in englishByY.entries) {
+        final engText = engEntry.key == engEntry.key ? engEntry.value : '';
+        final engY = engEntry.key;
+        final lower = engText.toLowerCase();
 
-                final word = Word.create(english: text, korean: meaning);
-                words.add(word);
-                _selectedWordIds.add(word.id); // Select all by default
-              }
-            }
+        if (seen.contains(lower)) continue;
+        seen.add(lower);
+
+        // 가장 가까운 Y의 한국어 찾기
+        String korean = '';
+        double minDiff = yTolerance;
+        for (final korEntry in koreanByY.entries) {
+          final diff = (korEntry.key - engY).abs();
+          if (diff < minDiff) {
+            minDiff = diff;
+            korean = korEntry.value;
           }
         }
+
+        final word = Word.create(english: engText, korean: korean);
+        words.add(word);
+        _selectedWordIds.add(word.id);
       }
 
       if (mounted) {
